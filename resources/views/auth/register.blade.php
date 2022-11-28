@@ -1,69 +1,81 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<?php  $pageTitle = "Register"; ?>
+<!DOCTYPE html>
+<html lang="en">
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-            <!-- Name -->
-            <div>
-                <x-input-label for="name" :value="__('Name')" />
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
-            </div>
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
 
-            <!-- Role -->
-           <div class="form-group">
-                <select name="role" id="role" class="form-control">
-                    <option value="1">Admin</option>
-                    <option value="1">User</option>
-                    <option value="1">Vendor</option>
-                </select>
-           </div>
+    <title><?= $pageTitle;?></title>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
+    <!-- vendor css -->
+    <link href="{{asset('backend')}}/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="{{asset('backend')}}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="{{asset('backend')}}/lib/select2/css/select2.min.css" rel="stylesheet">
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+    <!-- Bracket CSS -->
+    <link rel="stylesheet" href="{{asset('backend')}}/css/bracket.css">
+</head>
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
+<body>
 
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
+    <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+        <div class="login-wrapper wd-300 wd-xs-400 pd-25 pd-xs-40 bg-white rounded shadow-base">
+            <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal"></span> Sign <span class="tx-info">Up</span> <span class="tx-normal"></span></div>
+            <div class="tx-center mg-b-40">Softness IT</div>
 
-                <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
+            <form action="{{ route('register') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter your name" name="name">
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                </div><!-- form-group -->
+                <div class="form-group">
+                    <select name="role" id="role" class="form-control">
+                        <option value="1">Admin</option>
+                        <option value="2">User</option>
+                        <option value="3">Vendor</option>
+                    </select>
+                </div><!-- form-group -->
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter your email" name="email">
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div><!-- form-group -->
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Enter your password" name="password">
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div><!-- form-group -->
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation">
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                </div><!-- form-group -->
+                <button type="submit" class="btn btn-info btn-block">Sign Up</button>
+            </form>
 
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
+            <div class="mg-t-40 tx-center">Not yet a member? <a href="{{route('login')}}" class="tx-info">Sign Up</a></div>
+        </div><!-- login-wrapper -->
+    </div><!-- d-flex -->
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
+    <script src="{{asset('backend')}}lib/jquery/jquery.min.js"></script>
+    <script src="{{asset('backend')}}lib/jquery-ui/ui/widgets/datepicker.js"></script>
+    <script src="{{asset('backend')}}lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('backend')}}lib/select2/js/select2.min.js"></script>
+    <script>
+        $(function() {
+            'use strict';
 
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+            $('.select2').select2({
+                minimumResultsForSearch: Infinity
+            });
+        });
+    </script>
+
+</body>
+
+</html>
