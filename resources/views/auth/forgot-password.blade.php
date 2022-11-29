@@ -1,33 +1,52 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<?php $pageTitle = "Forgot Password"; ?>
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
+    <title><?= $pageTitle; ?></title>
 
-            <!-- Email Address -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <!-- vendor css -->
+    <link href="{{asset('backend')}}/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="{{asset('backend')}}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+
+    <!-- Bracket CSS -->
+    <link rel="stylesheet" href="{{asset('backend')}}/css/bracket.css">
+</head>
+
+<body>
+
+    <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
+
+        <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
+            <div class="mb-4 text-sm text-gray-600">
+                <p>Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-primary-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+
+            <form action="{{ route('password.email') }}" method="POST">
+                <div class="form-group">
+                    <input type="text" name="email" id="email" name="email" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="flex items-center justify-end mt-4">
+                    <a href="{{Route('password.email')}}" class="btn btn-dark">Email Password Reset Link</a>
+                </div>
+            </form>
+
+        </div><!-- login-wrapper -->
+    </div><!-- d-flex -->
+
+    <script src="{{asset('backend')}}/lib/jquery/jquery.min.js"></script>
+    <script src="{{asset('backend')}}/lib/jquery-ui/ui/widgets/datepicker.js"></script>
+    <script src="{{asset('backend')}}/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

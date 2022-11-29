@@ -34,7 +34,6 @@
                 @csrf
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter your name" name="name">
-                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div><!-- form-group -->
                 <div class="form-group">
                     <select name="role" id="role" class="form-control">
@@ -45,20 +44,17 @@
                 </div><!-- form-group -->
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter your email" name="email">
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div><!-- form-group -->
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Enter your password" name="password">
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div><!-- form-group -->
                 <div class="form-group">
                     <input type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation">
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div><!-- form-group -->
                 <button type="submit" class="btn btn-info btn-block">Sign Up</button>
             </form>
 
-            <div class="mg-t-40 tx-center">Not yet a member? <a href="{{route('login')}}" class="tx-info">Sign Up</a></div>
+            <div class="mg-t-40 tx-center">Not yet a member? <a href="{{route('login')}}" class="tx-info">Sign In</a></div>
         </div><!-- login-wrapper -->
     </div><!-- d-flex -->
 
